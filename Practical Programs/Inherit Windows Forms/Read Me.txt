@@ -1,0 +1,58 @@
+File -> New -> Project.
+
+Select Visual Basic Projects. In the right-side pane, select Windows Application, type in the name of the application as 'BaseForm' and click OK. This would bring up the Visual Studio IDE.
+
+Right click on project name "BaseForm" in the Solution Explorer and select Properties.
+
+Change the Output type to Class Library and click OK.
+
+We will create it as a Class Library instead of a Windows Form since we won't be implementing the form by itself but will just be inheriting from it. 
+
+When back to the Visual Studio IDE, drag and drop a picture box from the toolbox on to the form.
+
+Next select the PictureBox control on the form, and in the Properties window modify its Image property. Click on the button with the ellipse on it.
+
+A standard Windows 'Open' dialog box pops up. Go somewhere and select an image file and click Open. The image (M D Infotech Logo in my case) should appear in the PictureBox now. Drag and drop the logo to the top left hand corner.
+
+Next drag and drop a couple of Buttons from the ToolBox on to the Form.
+
+Change the Text property of the first button to About and the next one to Help.
+
+Double click the About button. It should open up the Code Window for you. Type in this line of code.
+
+MsgBox("About Box appears here!")
+
+In VB the line that we typed in would display a message box on the user's screen displaying the message that the About box would appear in its place. Since we don't want to waste time creating a regular About box we are just inserting a "place holder" for the About box. This message would pop-up every time you click on the About button.
+
+Double click on the Help button. To enter the code window again, type in the following line of code:
+
+MsgBox("Help appears here!")
+
+Now what exactly we've done is that we've created two buttons and a picture box displaying company's logo. This would appear in all the forms that will inherit it. Now the About button would always display information about the company. But the Help button should display help information on the current form, right? That is, if a login screen is inheriting from this base form, and if the user clicks on the Help button on the login screen, it should display help info on the login screen, and if the user clicks on the help button on some data entry screen, it should display help for that particular screen. But we are hard-coding on this base form. How would we achieve this? Simple, ever heard of overriding? Simply override the Button2_Click function in the form that's inheriting it, so that it displays the proper help! But for this to happen, we need to follow a few steps. Starting from the one described below.
+
+Click once on the About button. In the Properties window, set its Modifiers property to Private. Private modifier makes sure that the inheritor cannot modify the behavior of this button.
+
+Now click once on the Help button and change its Modifiers property to Protected. This would allow the event handler of the Help button to be changed in the inherited forms.
+Phew, finally we are done! That was difficult, wasn't it? But at least it's over. Now we've got to build the Class Library, we do that by clicking on Build and then selecting Build again from the menu. This should build a DLL file - a Class Library with the form that we just created. And believe me, this is the end of part 1.
+
+Let's begin the sequel to our Visual Inheritance Lab. In this part we will create another form which will inherit from the base form we created in the previous part. Sounds interesting, doesn't it? Don't worry, it ain't a lot of work, let's get started.
+
+Leaving the current project open, click on File -> New -> Project to open another project in the same solution.
+
+You will be presented with the familiar New Project dialog box. You'll have to select Visual Basic Projects on the left pane and Windows Application on the right. Select the Add to Solution radio button. Type in the name as InheritedForm and click OK.
+
+We need to add the new project that we are creating to the existing (the base form) solution. That's the reason we selected the Add to Solution radio button. If the default Close solution was left selected, then the current solution would have closed and a new solution would have been created.
+
+Note that the Solution Explorer lists out two projects now. Select the InheritdForm's Form1.vb. Right click and select Delete. Click OK if prompted whether to delete the form permanently.
+
+To add a reference to the Base Forms Class Library, click on Project -> Add Reference. You will be presented with an Add Reference dialog box. Switch over to the Projects tab. Double click on BaseForm. Click OK to add the reference.
+
+Right click on InheritedForm in the Solution Explorer. Select Add -> Add Inherited Form.
+
+Select Add Inherited Form
+
+You will be presented with an Add New Item dialog box. Verify that the inherited form item is selected and click Open.
+
+You will be presented with an inheritance picker dialog box. Over here select BaseForm and click OK.
+
+This should create a new form Form1 in the InheritedForm project. This form is derived from the BaseForm project. Open the Form1 designer if it isn't so.

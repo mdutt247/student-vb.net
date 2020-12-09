@@ -1,0 +1,184 @@
+<!doctype>
+<html lang="en">
+<head>
+
+<title>
+File IO
+
+</title>
+
+<style>
+body
+{
+	margin: 40px auto;
+	max-width:650px;
+	line-height:1.6;
+	font-size:18px;
+	color:#444;
+	padding:0;
+}
+
+</style>
+
+</head>
+<body>
+<h1>File IO</h1>
+
+<h2>Working with binary files</h2>
+
+To read and write data in a binary file, you use the BinaryReader and BinaryWriter classes. 
+
+First of all we create a binary writer object using the following syntax.
+
+<code>New BinaryWriter(stream). </code>
+
+To do that, we must supply a file stream object as an argument for the constructor of the BinaryWriter class. This links the stream to the BinaryWriter object so it can be used to write the file. After creating the binary writer object, we can use its <code>Write()</code> method to write all types of data. 
+<br /><br />
+This method begins by figuring out what type of data has been passed to it. Then it writes that type of data to the file.
+
+<h2>Common Methods of BinaryWriter class</h2>
+<ul>
+	<li><code>Write(data)</code> -- Writes the specified data to the output stream.</li>
+	<li><code>Close()</code> -- closes the BinaryWriter object and the associated FileStream object</li>
+</ul>
+
+<pre>
+Dim binaryOut as New BinaryWriter(New FileStream(path, 
+				FileMode.Create, FileAccess.Write))
+
+For Each product As Product in Products
+	binaryOut.Write(product.Code)
+	binaryOut.Write(product.Description)
+	binaryOut.Write(product.Price)
+Next
+
+binaryOut.Close
+</pre>
+
+In the above code, a BinaryWriter is created for a FileStream that. Since the Mode argument has been set to Create, this will overwrite the file if it exists and create the file if it does not exist.
+<br /><br />
+Then a For Each loop is used to write the elemnts in a List collection named Products to the file. Since a List collection contains objects of the Product class, each property of the Product object is written to the file separately using the Write() method after all the elements in the List collection have been written to the file. 
+
+<pre>
+Dim arr() as Int32 = { 2, 6, 9, 11, 45, 87 }
+Using writer as BinaryWriter = New BinaryWriter(
+				File.Open("file.bin", FileMode.Create))
+
+	For Each value as Int32 In arr
+		writer.Write(value)
+	Next
+End Using
+
+// Using the old way
+
+Dim binaryOut as New BinaryWriter(New FileStream(
+path), 
+				FileMode.Create, FileAccess.Write)
+
+For Each value as Int32
+	binaryOut.Write(value)
+Next
+
+binaryOut.Close()
+</pre>
+
+<h2>How to read a binary file</h2>
+
+Like the BinaryWriter class the argument that we pass to the BinaryReader is the name of the FileStream object that connects the string to a file.
+<br /><br />
+In a binary file there is no termination character to indicate where one record ends and another begins. Because of that we cannot read an entire record at once. Instead you have to read one character or one field at a time. To do that you use the Read() methods of the BinaryReader class. You must use the appropriate method for the datatype of the field that you want to read. Before you read the next character or field, you want to be sure that you are not at the end of the file. To do that, you use the PeekChar() method then if there is atleast one more character to be read, this method returns that character without advancing the cursor to the next position in the file. If there is not another character, the PeekChar() method returns a value of -1. Then you can use the Close() method to close the BinaryReader and the associated FileStream 
+
+<h3>Syntax:</h3>
+<pre>
+	New BinaryReader(stream)
+</pre>
+
+<h2>Common Methods of the BinaryReader class</h2>
+<dl>
+<dt>PeekChar()</dt> <dd>Returns the next available character in the input stream without advancing to the next position. If no more characters are available, this method returns -1. </dd>
+<dt>Read()</dt><dd> Returns the next available character from the input stream and advancing to the next position in the file. </dd>
+<dt> ReadBoolean()</dt><dd> Returns a boolean value from the input stream and advances the current position of the stream by one byte</dd>
+<dt>ReadByte()</dt>
+<dd>Returns a byte from the input stream and advances the current position of the stream accordingly</dd>
+<dt>ReadChar()</dt>
+<dd>Returns a character from the input stream and advances the current position of the stream accordingly</dd>
+<dt>ReadDecimal()</dt>
+<dd>Returns a decimal value from the input stream and advances the current position of the stream by 16 bytes</dd>
+<dt>ReadInt32()</dt>
+<dd>Returns a 4 byte signed integer value from the input stream and advances the current position of the stream by 4 bytes</dd>
+<dt>ReadString()</dt>
+<dd>Returns a string and advances the current position of the stream by the number of characters in the string</dd>
+<dt>Close()</dt>
+<dd>Closes the BinaryReader object and the associated FileStream object</dd>
+</dl>
+
+<pre>
+Using reader as New BinaryReader(File.Open("file.bin"), FileMOde.Open)
+
+While reader.PeekChar() <> -1
+	Dim value as Integer = reader.ReadInt32
+	Console.WriteLine(value)
+End While
+</pre>
+
+
+<!-- StreamReader stuff goes here -->
+<h2>How to work with text files</h2>
+TO read and write characters in a text file we use the StreamReader and StreamWriter classes. When working with text files you often need to use string, date and numeric data.
+
+<h3>Writing text files</h3>
+Create a StreamWriter object which takes a FileStream object as its argument as follows:
+
+<pre>New Stream(stream)</pre>
+
+After creating a StreamWriter object we write any data to a text file by using the Write() and WriteLine() methods.	When we use the WriteLine() method, a line terminator is automatically added. Typically a line terminator is used to end each record. The fields in a record are typically separated by special characters such as pipe character by adding those characters through code. 
+<br /><br />
+Both the Write and WriteLine methods of StreamWriter class are overloaded to accept any type of data. As a result if we pass a non-string datatype to either of these methods, the method converts the data type to a string that represents the data type and then it writes that string to the stream. To do that these methods automatically call the ToString() method of the datatype.
+
+<h3>Common Methods of the StreamWriter class</h3>
+<dl>
+<dt>Write()</dt><dd>Writes the data to the output stream</dd>
+<dt>WriteLine()</dt><dd>Writes the data to the output stream and appends a line terminator (CRLF) </dd>
+<dt>Close()</dt><dd>Closes the StreamWriter object and associated FileStream object</dd>
+
+<b>Example:</b>
+<pre>
+Dim cDirs As DirectoryInfo() = new DirectoryInfo("C:\").GetDiretories()
+
+Dim sw AS New StreamWriter(New FileStream("CDriveDirs.txt", FileMode.Create, FileAccess.Write))
+
+For Each Dir As DirectoryInfo In cDirs sw.WriteLine(Dir.Name)
+	sw.WriteLine(Dir.Name)
+Next
+sw.Close()
+</pre>
+
+<h3>How to read a text file</h3>
+
+Create a StreamReader object which takes a FileStream object as its argument
+
+<h3>Syntax</h3>
+<pre>New StreamReader(stream)</pre>
+
+<h3>Common Methods of the StreamReader class</h3>
+<dl>
+<dt>Peek()</dt><dd>Returns the next available character in the input stream without advancing to the next position. If no more characters are available this method returns -1     </dd>
+<dt>Read()</dt><dd>Reads the next character from the input stream.   </dd>
+<dt>ReadLine()</dt><dd>Reads the next line of characters from the input stream and returns it as a string</dd>
+<dt>ReadToEnd()</dt><dd>Reads the data from the current position in the input stream to the end of the stream and returns it as a string. This is typically used to read the contents of an entire file</dd>
+<dt>Close()</dt><dd>Closes both the StreamReader and associated FileStream object</dd>
+</dl>
+
+<pre>
+
+Dim line As String = ""
+Dim sr As StreamReader = New StreamReader(New FileStream("cdirs.txt"), FileMode.Open)
+Do
+    line = sr.ReadLine()
+    Console.WriteLine(line)
+Loop Until line Is Nothing
+
+</pre>
+
+</body>
+</html>

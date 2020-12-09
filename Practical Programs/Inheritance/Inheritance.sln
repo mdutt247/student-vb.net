@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Hierarchical", "Hierarchical\Hierarchical.vbproj", "{0C644EB2-E875-496B-832E-8CD68B9A2F99}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Single", "Single\Single.vbproj", "{847C53CA-E9AD-4B76-89E4-E592E02E8BA2}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Multilevel", "Multilevel\Multilevel.vbproj", "{8DBD4EDD-264C-43BF-80F0-3181E87799BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C644EB2-E875-496B-832E-8CD68B9A2F99}.Debug|x86.ActiveCfg = Debug|x86
+		{0C644EB2-E875-496B-832E-8CD68B9A2F99}.Debug|x86.Build.0 = Debug|x86
+		{0C644EB2-E875-496B-832E-8CD68B9A2F99}.Release|x86.ActiveCfg = Release|x86
+		{0C644EB2-E875-496B-832E-8CD68B9A2F99}.Release|x86.Build.0 = Release|x86
+		{847C53CA-E9AD-4B76-89E4-E592E02E8BA2}.Debug|x86.ActiveCfg = Debug|x86
+		{847C53CA-E9AD-4B76-89E4-E592E02E8BA2}.Debug|x86.Build.0 = Debug|x86
+		{847C53CA-E9AD-4B76-89E4-E592E02E8BA2}.Release|x86.ActiveCfg = Release|x86
+		{847C53CA-E9AD-4B76-89E4-E592E02E8BA2}.Release|x86.Build.0 = Release|x86
+		{8DBD4EDD-264C-43BF-80F0-3181E87799BF}.Debug|x86.ActiveCfg = Debug|x86
+		{8DBD4EDD-264C-43BF-80F0-3181E87799BF}.Debug|x86.Build.0 = Debug|x86
+		{8DBD4EDD-264C-43BF-80F0-3181E87799BF}.Release|x86.ActiveCfg = Release|x86
+		{8DBD4EDD-264C-43BF-80F0-3181E87799BF}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

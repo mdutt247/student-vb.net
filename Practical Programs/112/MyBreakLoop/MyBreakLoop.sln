@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MyBreakLoop", "MyBreakLoop\MyBreakLoop.vbproj", "{56225FDA-8C8E-4BBF-BD7E-04D6A75C1090}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56225FDA-8C8E-4BBF-BD7E-04D6A75C1090}.Debug|x86.ActiveCfg = Debug|x86
+		{56225FDA-8C8E-4BBF-BD7E-04D6A75C1090}.Debug|x86.Build.0 = Debug|x86
+		{56225FDA-8C8E-4BBF-BD7E-04D6A75C1090}.Release|x86.ActiveCfg = Release|x86
+		{56225FDA-8C8E-4BBF-BD7E-04D6A75C1090}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MyForEachStatement", "MyForEachStatement\MyForEachStatement.vbproj", "{C89553EA-2F2E-43B6-A9C3-9C8C60BE5B5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C89553EA-2F2E-43B6-A9C3-9C8C60BE5B5F}.Debug|x86.ActiveCfg = Debug|x86
+		{C89553EA-2F2E-43B6-A9C3-9C8C60BE5B5F}.Debug|x86.Build.0 = Debug|x86
+		{C89553EA-2F2E-43B6-A9C3-9C8C60BE5B5F}.Release|x86.ActiveCfg = Release|x86
+		{C89553EA-2F2E-43B6-A9C3-9C8C60BE5B5F}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
